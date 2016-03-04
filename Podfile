@@ -13,20 +13,21 @@ target "Morkovka" do
 	pod 'SSKeychain', '~> 1.2.0'
 	pod 'puremvc', '~> 0.0.1'
 	pod 'Mantle', '~> 2.0.5'
-	pod "MMPReactiveCoreLocation"
+	pod 'MMPReactiveCoreLocation'
 
 # UI & Appearance.
 
-	pod 'WTAHelpers', :git => 'git@github.com:willowtreeapps/WTAHelpers.git', :tag => '0.0.1'
-	pod 'TPKeyboardAvoiding', '~> 1.2.11'
+#	pod 'WTAHelpers', :git => 'git@github.com:willowtreeapps/WTAHelpers.git', :tag => '0.0.1'
+#	pod 'TPKeyboardAvoiding', '~> 1.2.11'
 	pod 'ECSlidingViewController', '~> 2.0.3'
 	pod 'VMTableViewStaticCells'
-	pod 'MCSwipeTableViewCell', '~> 2.1.4'
+    #pod 'MCSwipeTableViewCell', '~> 2.1.4'
 	pod 'SWTableViewCell', '~> 0.3.7'
-	pod 'MGSwipeTableCell'
+    #pod 'MGSwipeTableCell'
 
 # Misc.
 
-	pod 'Harpy'
+#	pod 'Harpy'
    
 end
+

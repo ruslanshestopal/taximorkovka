@@ -1,6 +1,7 @@
 #import "MorkovkaHTTPClient.h"
 #include <CommonCrypto/CommonDigest.h>
 
+static NSString * const kBackgroundSessionIdentifier = @"com.ruslanshestopal.backgroundsession";
 // Service host name.
 static NSString *const MorkovkaAPIHostName = @"62.205.151.60:6969";
 // Basic authentication credentials to access server.
@@ -10,10 +11,17 @@ static NSString *const MorkovkaBasicAuthPassword = @"guest";
 @implementation MorkovkaHTTPClient
 
 - (id) init {
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration
+     backgroundSessionConfigurationWithIdentifier:kBackgroundSessionIdentifier];
+    
     NSURL *baseURL =
     [NSURL URLWithString:
      [@"http://" stringByAppendingString:MorkovkaAPIHostName]];
-    if (!(self = [super initWithBaseURL:baseURL])) return nil;
+    if (!(self = [super initWithBaseURL:baseURL
+                   sessionConfiguration:configuration])) return nil;
+
+
 
     AFJSONRequestSerializer *serializerRequest = [AFJSONRequestSerializer
                                                             serializer];

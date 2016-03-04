@@ -75,6 +75,7 @@
 }
 - (void) addRoutePoint:(RoutePoint *)point{
     self.routePoints = [self.routePoints arrayByAddingObject:point];
+    self.preCheck = nil;
 }
 - (NSString*) extrasComponentsString{
     NSMutableArray *compAray = [NSMutableArray array];

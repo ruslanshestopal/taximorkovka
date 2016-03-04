@@ -25,7 +25,16 @@
 + (NSValueTransformer *)gpsJSONTransformer {
     return [MTLJSONAdapter dictionaryTransformerWithModelClass:[DriverPosition class]];
 }
-
+- (BOOL) isExpired{
+    NSTimeInterval ti = [[NSDate date] timeIntervalSinceDate:self.dispatchedAt];
+    NSInteger minutes = (NSInteger) (ti / 60);
+    return minutes>60;
+}
+- (BOOL) isProcessed{
+    NSTimeInterval ti = [[NSDate date] timeIntervalSinceDate:self.dispatchedAt];
+    NSInteger minutes = (NSInteger) (ti / 60);
+    return minutes>20 && self.isArchived;
+}
 /*
  {
  "dispatching_order_uid": "5088d3414944476586430510f08adf95",

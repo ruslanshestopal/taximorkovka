@@ -56,11 +56,9 @@
 }
 - (void) addToFavorites:(RoutePoint *)point{
     if ([self.myFavoritesArray includes:point]) {
-        
         return;
     }
     [self.myFavoritesArray addObject:point];
-
     [self saveFavoritesToFile];
     
 }

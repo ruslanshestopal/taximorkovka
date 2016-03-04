@@ -1,15 +1,11 @@
-#import <QuartzCore/QuartzCore.h>
-#import <ObjectiveSugar/ObjectiveSugar.h>
-#import "TTTTimeIntervalFormatter.h"
 #import "TaxiOrderViewController.h"
-#import "UIViewController+ECSlidingViewController.h"
-#import "UITableView+VMStaticCells.h"
-#import "MorkovkaHTTPClient.h"
 #import "DateSelectionViewController.h"
 #import "AddRoutePointTableViewController.h"
 #import "KievOnMapViewController.h"
 #import "ExtraServiceTableViewController.h"
 #import "TipsTableViewController.h"
+#import "PreOrderViewController.h"
+
 
 @interface TaxiOrderViewController ()<UIGestureRecognizerDelegate>
 
@@ -38,11 +34,11 @@
                                      cellWithIdentifier:@"preoderCell"];
     UIButton *nButton = [cell viewWithTag:11];
     [nButton addTarget:self
-                action:@selector(proceedWithTaxiOder:)
+                action:@selector(proceedWithTaxiPreOder:)
       forControlEvents:UIControlEventTouchDown];
     UIButton *fButton = [cell viewWithTag:22];
     [fButton addTarget:self
-                action:@selector(proceedWithTaxiOder:)
+                action:@selector(proceedWithTaxiPreOder:)
       forControlEvents:UIControlEventTouchDown];
     
     
@@ -121,8 +117,8 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView
-                    viewForHeaderInSection:(NSInteger)section
-{    UITableViewCell *cell;
+                    viewForHeaderInSection:(NSInteger)section{
+    UITableViewCell *cell;
     if(section == 0){
     
         if([self.destination startingPointIsReady]){
@@ -277,10 +273,6 @@
         self.destination.routePoints = arr;
         self.destination.preCheck = nil;
         [self autoCalculatePrice];
-        //NSRange range = NSMakeRange(0, [self numberOfSectionsInTableView:self.tableView]);
-        //NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:range];
-        //[self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationFade];
-        
         [self.tableView reloadData];
     }
     
@@ -325,37 +317,46 @@
     AddRoutePointTableViewController *vc = (AddRoutePointTableViewController*)[storyboard
                         instantiateViewControllerWithIdentifier:@"AddAdressStoryboardVC"];
     [vc setDelegate:_delegate];
-    if (sender.tag==10) {
-        [vc setInitialMode:0];
-    }else if (sender.tag==11){
-        [vc setInitialMode:1];
-    }else if (sender.tag==12){
-        [vc setInitialMode:2];
-    }
-
     [self.navigationController pushViewController:vc animated:YES];
 }
--(void)proceedWithTaxiOder:(UIButton*)sender{
-    NSLog(@"proceedWithTaxiOder");
+-(void)proceedWithTaxiPreOder:(UIButton*)sender{
+    
     if (sender.tag ==22) {
         _destination.addCost = [NSNumber numberWithInt:20];
     }
     
+    UIStoryboard *storyboard = [UIStoryboard
+                                storyboardWithName:@"Main" bundle:nil];
+    
+    PreOrderViewController *vc = (PreOrderViewController*)[storyboard
+                            instantiateViewControllerWithIdentifier:@"PreOrderStoryboardVC"];
+    @weakify(self);
+    [vc setConfirmationBlock:^{
+        @strongify(self)
+        [self proceedWithTaxiOder];
+    }];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+-(void)proceedWithTaxiOder{
+    NSLog(@"proceedWithTaxiOder");
+
     [self addOverlayView];
+    /*
     _destination.userName = @"Morkovka iOS Test";
     _destination.userComment = @"разработка приложения";
     _destination.userPhone = @"+38(000)-000-00-00";
+    */
     
+    _destination.userPhone = [[NSUserDefaults standardUserDefaults]
+                                stringForKey:@"userPhone"];
+    _destination.userName = [[NSUserDefaults standardUserDefaults]
+                               stringForKey:@"userName"];
     @weakify(self);
     [[_delegate placeAnOrder] subscribeNext:^(NSDictionary *params) {
-        @strongify(self)
-        if ([params isKindOfClass:[NSDictionary class]]) {
-           // NSLog(@"proceedWithTaxiOder %@", self->_destination);
-        }
-     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView reloadData];
-        [self.overlayView removeFromSuperview];
-     });
+        NSLog(@"placeAnOrder subscribeNext!");
+
     }
    error:^(NSError *error) {
         @strongify(self)
@@ -371,13 +372,12 @@
             otherButtonTitles: nil];
              [alert show];
              });
+       
+
+       NSLog(@"serializedData %@", error);
         }
         completed:^{
-            NSLog(@"completed!");
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-                [self.overlayView removeFromSuperview];
-            });
+            NSLog(@"placeAnOrder completed!");
         }
      ];
 }
@@ -416,7 +416,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
             UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle: NSLocalizedString(@"Ошибка",nil)
-                                  message: @"Ничего не найдено"
+                                  message: NSLocalizedString(@"Ничего не найдено",nil)
                                   delegate: nil
                                   cancelButtonTitle: NSLocalizedString(@"OK",nil)
                                   otherButtonTitles: nil];
@@ -433,7 +433,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             UIAlertView *alert = [[UIAlertView alloc]
                  initWithTitle: NSLocalizedString(@"Ошибка",nil)
-                 message: @"Не удалось определить местоположение"
+                 message:  NSLocalizedString(@"Не удалось определить местоположение",nil)
                  delegate: nil
                  cancelButtonTitle: NSLocalizedString(@"OK",nil)
                  otherButtonTitles: nil];
@@ -452,6 +452,7 @@
     self.overlayView = [cell contentView];
     self.overlayView.autoresizingMask = UIViewAutoresizingFlexibleWidth |
                                         UIViewAutoresizingFlexibleHeight;
+    self.overlayView.tag = 55;
     [self.overlayView setFrame:
             [[UIApplication sharedApplication].keyWindow bounds]];
     [[UIApplication sharedApplication].keyWindow
@@ -462,9 +463,6 @@
 -(void) autoCalculatePrice{
     if ([_destination routeIsReady]) {
         NSLog(@"SOULD UPDATE PRICE");
-        _destination.userName = @"Morkovka iOS Test";
-        _destination.userComment = @"Test приложения";
-        _destination.userPhone = @"+38(000)-000-00-00";
 
         UILabel *nLabel = [self.priceView viewWithTag:10];
         nLabel.text = @"";
@@ -499,8 +497,10 @@
 
 }
 - (void) onOderPlacement{
-    [self.overlayView removeFromSuperview];
-    [self.tableView reloadData];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView reloadData];
+        [self.overlayView removeFromSuperview];
+    });
 }
 
 + (NSArray *)kMenuTitles{

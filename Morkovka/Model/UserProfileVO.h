@@ -1,5 +1,4 @@
-#import <Mantle/Mantle.h>
-#import <ObjectiveSugar/ObjectiveSugar.h>
+
 
 @interface UserProfileVO : MTLModel<MTLJSONSerializing>
 @property(nonatomic, copy) NSString *userName;

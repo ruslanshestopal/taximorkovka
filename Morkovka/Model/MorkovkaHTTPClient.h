@@ -1,4 +1,3 @@
-#import <AFNetworking/AFNetworking.h>
 
 @interface MorkovkaHTTPClient : AFHTTPSessionManager
 +(NSString *) SHA512StringFromString:(NSString*)input;

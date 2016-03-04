@@ -28,11 +28,12 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
     self.ordersArr = [NSMutableArray new];
     self.streets = [NSArray new];
     self.credentialsProxy = [self.facade retrieveProxy:[CredentialsProxy name]];
+
+    NSLog(@"self.credentialsProxy %@ %@ ", self.credentialsProxy.username, self.credentialsProxy.password);
     
     if (self.credentialsProxy.hasCredentials &&
         self.credentialsProxy.credentialsAreValid) {
         //[self.credentialsProxy clearCredentials];
-        NSLog(@"self.credentialsProxy.username %@ %@ ", self.credentialsProxy.username, self.credentialsProxy.password);
         [self.http updateBasicAuthHeaderWith:self.credentialsProxy.username
                                  andPassword:self.credentialsProxy.password];
     }
@@ -56,7 +57,7 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
     self.streets = [self.streets arrayByAddingObjectsFromArray:poiArray];
     
 
-
+    /*
     
     RunningOrderVO *order = [RunningOrderVO new];
     order.orderUID = @"7c2220e7de6342f0ab16862afaf7e4dc";
@@ -81,22 +82,12 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
     order.gps = pos;
     
     [self.ordersArr addObject:order];
-
+     */
 
 }
 
 - (RACSignal *) startJSONRequest:(NSString *)requestStr {
     NSParameterAssert(requestStr != nil);
-     /*
-     NSURL *baseURL = [NSURL URLWithString:@"http://example.com/v1/"];
-     [NSURL URLWithString:@"foo" relativeToURL:baseURL];                  // http://example.com/v1/foo
-     [NSURL URLWithString:@"foo?bar=baz" relativeToURL:baseURL];          // http://example.com/v1/foo?bar=baz
-     [NSURL URLWithString:@"/foo" relativeToURL:baseURL];                 // http://example.com/foo
-     [NSURL URLWithString:@"foo/" relativeToURL:baseURL];                 // http://example.com/v1/foo
-     [NSURL URLWithString:@"/foo/" relativeToURL:baseURL];                // http://example.com/foo/
-     [NSURL URLWithString:@"http://example2.com/" relativeToURL:baseURL]; // http://example2.com/
-     */
-    
     @weakify(self);
     return [RACSignal createSignal:
             ^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -144,7 +135,7 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
             }];
 }
 
-- (RACSignal *) startPUTRequest:(NSString *)requestPath{
+- (RACSignal *) startPUTRequest:(NSString *)requestPath withParams:(NSDictionary *)params{
     NSParameterAssert(requestPath != nil);
     @weakify(self);
     return [RACSignal createSignal:
@@ -153,7 +144,7 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
                 NSURLSessionDataTask *dataTask =
                 [self.http PUT:[NSURL URLWithString:requestPath
                                       relativeToURL:self.http.baseURL].absoluteString
-                    parameters:nil
+                    parameters:params
                        success:^(NSURLSessionTask *task, id responseObject) {
                            [subscriber sendNext:responseObject];
                            [subscriber sendCompleted];
@@ -169,29 +160,6 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
 
 }
 
-- (RACSignal *) startLocationRequest:(NSString *)requestStr {
-    NSParameterAssert(requestStr != nil);
-   
-    @weakify(self);
-    return [RACSignal createSignal:
-            ^RACDisposable *(id<RACSubscriber> subscriber) {
-                @strongify(self)
-                NSURLSessionDataTask *dataTask =
-                [self.http GET:requestStr
-                    parameters:nil
-                      progress:nil
-                       success:^(NSURLSessionTask *task, id responseObject) {
-                           [subscriber sendNext:responseObject];
-                           [subscriber sendCompleted];
-                           
-                       } failure:^(NSURLSessionTask *operation, NSError *error) {
-                            [subscriber sendError:error];
-                       }];
-                return [RACDisposable disposableWithBlock:^{
-                    [dataTask cancel];
-                }];
-            }];
-}
 
 - (RACSignal *) searchForStreet:(NSString *)street{
     
@@ -219,6 +187,8 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
     }
     return [RACSignal return:matchesArray];
 }
+
+/*
 - (RACSignal *)search:(NSString *)text {
     
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -231,6 +201,7 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
         return nil;
     }];
 }
+
 - (void)search:(NSString *)text completed:(CompletedResults)handler {
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -242,6 +213,8 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
         }];
     });
 }
+ */
+ 
 - (RACSignal *) logginWithName:(NSString *)name andPassword:(NSString *)pass{
     NSDictionary *params = @{@"login": name,
                              @"password": [MorkovkaHTTPClient
@@ -303,7 +276,7 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
              ];
             [self.facade sendNotification:onOrderDidSuccessfullyPlaced];
 
-              NSLog(@"RunningOrderVO %@",  self.destination);
+              NSLog(@"RunningOrderVO %@",  order);
         }error:^(NSError *error) {
             NSLog(@"Error making order");
             [subscriber sendError:error];
@@ -318,29 +291,83 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
 }
 
 
-- (RACSignal *)updateRoutingWithSession:(NSString *)session {
-
-    NSLog(@"updateRoutingWithSession %@", session);
+- (RACSignal *)updateRoutingWithSession:(RunningOrderVO *)order {
+    //@"7c2220e7de6342f0ab16862afaf7e4dc"
+    NSLog(@"updateRoutingWithSession %@", order.orderUID);
     NSString *url = NSStringWithFormat(@"/api/weborders/%@",
-                                       @"7c2220e7de6342f0ab16862afaf7e4dc");
+                                      order.orderUID);
     return [self startJSONRequest:url];
 }
 
 - (RACSignal *)fetchTaxi {
+
     return [[self startRouting] flattenMap:^RACStream *(RunningOrderVO *order) {
-        return [[[[self updateRoutingWithSession:order.orderUID]
+        UIBackgroundTaskIdentifier backgroundTask = [[UIApplication sharedApplication]
+                                    beginBackgroundTaskWithExpirationHandler:^{
+            NSLog(@"Ran out of time");
+        }];
+        
+        RACSignal *taskSignal = [[[[self updateRoutingWithSession:order]
                   delay:10.0f]
                  repeat]
                 takeUntilBlock:^BOOL(NSDictionary *response) {
                     NSLog(@"takeUntilBlock %@ \n %@", response[@"order_car_info"], response);
                
-                    
-                    if ([response[@"order_is_archive"] boolValue]) {
-                       NSLog(@"takeUntilBlock CANCEL");
+
+                    if(![response[@"order_car_info"] isKindOfClass:[NSNull class]]){
+                        order.foundCar = response[@"order_car_info"];
+                        order.dispatchedAt = [NSDate date];
+                        order.isArchived = YES;
+                        UILocalNotification *notification = [UILocalNotification new];
+                        notification.timeZone  = [NSTimeZone systemTimeZone];
+                        notification.fireDate  = [[NSDate date] dateByAddingTimeInterval:1.0f];
+                        notification.alertAction = NSLocalizedString(@"Такси найдено", nil);
+                        notification.alertBody = response[@"order_car_info"];
+                        notification.soundName = UILocalNotificationDefaultSoundName;
+                        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+                        
+                       
+                        if (![response[@"drivercar_position"] isKindOfClass:[NSNull class]]) {
+                             NSDictionary *posDict = response[@"drivercar_position"];
+                             order.gps = [MTLJSONAdapter modelOfClass:DriverPosition.class
+                             fromJSONDictionary:posDict
+                             error:nil];
+                             NSLog(@"pos dict %@", posDict);
+                        }
+                        [self sendNotification:onServiceDidFoundTaxi];
+                        return YES;
+                    }else{
+                        if ([response[@"order_is_archive"] boolValue]) {
+                            NSLog(@"takeUntilBlock order_is_archive");
+                            order.dispatchedAt = [NSDate date];
+                            order.isArchived = YES;
+                            if ([response[@"order_car_info"] isKindOfClass:[NSNull class]]) {
+                                [self.ordersArr removeObject:order];
+                                UILocalNotification *notification = [UILocalNotification new];
+                                notification.timeZone  = [NSTimeZone systemTimeZone];
+                                notification.fireDate  = [[NSDate date] dateByAddingTimeInterval:1.0f];
+                                notification.alertAction = NSLocalizedString(@"Такси не найдено", nil);
+                                notification.alertBody = NSLocalizedString(@"Извините, но ничего не получилось.", nil);
+                                notification.soundName = UILocalNotificationDefaultSoundName;
+                                [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+                                [self sendNotification:onServiceDidNotFoundTaxi];
+                            }
+                            return YES;
+                        }
+                    }
+
+                    if (order.isCanceledByUser) {
+                        [self.ordersArr removeObject:order];
                         return YES;
                     }
                     return order.isCanceledByUser;
                 }];
+        return [taskSignal finally:^{
+             NSLog(@"taskSignal finally");
+             [[UIApplication sharedApplication]
+                        endBackgroundTask:backgroundTask];
+        }];
+        
     }];
 }
 
@@ -354,7 +381,7 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
             [[self startJSONRequest:@"/api/clients/profile"] subscribeNext:^(NSDictionary *val) {
                 NSError *error = nil;
                 self.userProfile = [MTLJSONAdapter modelOfClass:UserProfileVO.class
-                                             fromJSONDictionary:[val mutableCopy]
+                                             fromJSONDictionary:val
                                                           error:&error];
                 [subscriber sendNext:self.userProfile];
                 [subscriber sendCompleted];
@@ -365,6 +392,25 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
         }];
     }
 }
+
+- (RACSignal *) saveUserProfile:(NSDictionary *)params{
+    @weakify(self);
+    return  [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self)
+        [[self startPUTRequest:@"/api/clients/profile" withParams:params]
+         subscribeNext:^(id val) {
+             [subscriber sendNext:val];
+             [subscriber sendCompleted];
+         }error:^(NSError *error) {
+             [subscriber sendError:error];
+         }];
+        return nil;
+    }] doCompleted:^{
+        @strongify(self);
+        self.userProfile.userName = params[@"user_first_name"];
+    }];
+}
+
 - (RACSignal *) requestOrdersHistory{
     if (self.historyArr) {
         return [RACSignal return:self.historyArr];
@@ -394,7 +440,8 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
         }];
     }
 }
-- (RACSignal *) registerWithPhone:(NSDictionary *)params{
+
+- (RACSignal *) sendVerificationSMS:(NSDictionary *)params{
     @weakify(self);
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self)
@@ -415,6 +462,7 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
     }];
     
 }
+
 - (RACSignal *) registerWithUserNameAndCode:(NSDictionary *)params{
     @weakify(self);
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -425,6 +473,10 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
              [[NSUserDefaults standardUserDefaults]
                          setObject:params[@"user_first_name"]
                             forKey:@"userName"];
+             
+             [[NSUserDefaults standardUserDefaults]
+                         setObject:params[@"phone"]
+                            forKey:@"userPhone"];
              [[NSUserDefaults standardUserDefaults] synchronize];
              
              self.credentialsProxy.username = params[@"phone"];
@@ -450,10 +502,121 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
     }];
 }
 
+//
+
+
+- (RACSignal *) sendRestorationSMS:(NSDictionary *)params{
+    @weakify(self);
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self)
+        [[self startPOSTRequest:@"/api/account/restore/sendConfirmCode" withParams:params]
+         subscribeNext:^(id val) {
+             [subscriber sendNext:val];
+             [subscriber sendCompleted];
+         }error:^(NSError *error) {
+             [subscriber sendError:error];
+         }];
+        return nil;
+    }];
+    
+}
+
+- (RACSignal *) checkConfirmCode:(NSDictionary *)params{
+    @weakify(self);
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self)
+        [[self startPOSTRequest:@"/api/account/restore/checkConfirmCode" withParams:params]
+         subscribeNext:^(id val) {
+             [[NSUserDefaults standardUserDefaults]
+                        setObject:params[@"confirm_code"]
+                        forKey:@"confirmCode"];
+             [[NSUserDefaults standardUserDefaults]
+              setObject:params[@"phone"]
+              forKey:@"userPhone"];
+             [[NSUserDefaults standardUserDefaults] synchronize];
+             
+             [subscriber sendNext:val];
+             [subscriber sendCompleted];
+         }error:^(NSError *error) {
+             [subscriber sendError:error];
+         }];
+        return nil;
+    }];
+    
+}
+
+- (RACSignal *) accountRestore:(NSDictionary *)params{
+    @weakify(self);
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self)
+        [[self startPOSTRequest:@"/api/account/restore" withParams:params]
+         subscribeNext:^(id val) {
+             [subscriber sendNext:val];
+             [subscriber sendCompleted];
+         }error:^(NSError *error) {
+             [subscriber sendError:error];
+         }];
+        return nil;
+    }]doCompleted:^{
+        @strongify(self);
+        self.credentialsProxy.username = [[NSUserDefaults standardUserDefaults]
+                                         stringForKey:@"userPhone"];
+
+        self.credentialsProxy.password = params[@"password"];
+        self.credentialsProxy.credentialsAreValid = YES;
+        NSLog(@"doCompleted %@ %@", params[@"password"], self.credentialsProxy.username);
+        [self.http updateBasicAuthHeaderWith:self.credentialsProxy.username
+                                 andPassword:params[@"password"]];
+        [self.facade sendNotification:onMenuDidNavigateToSection
+                                 body:self.menuPath
+                                 type:MorkovkaServicePostAuthEvent
+         ];
+    }];
+
+    
+}
+
+- (RACSignal *) changeMyPassword:(NSDictionary *)params{
+
+    @weakify(self);
+    return  [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self)
+        [[self startPUTRequest:@"/api/account/changepassword" withParams:params]
+         subscribeNext:^(id val) {
+             [subscriber sendNext:val];
+             [subscriber sendCompleted];
+
+             /*
+              {
+              "oldPassword":"oldpsw",
+              "newPassword":"newpsw",
+              "repeatNewPassword":"newpsw"
+              }
+              */
+         }error:^(NSError *error) {
+             [subscriber sendError:error];
+         }];
+        return nil;
+    }] doCompleted:^{
+        @strongify(self);
+        NSString *loginName = self.credentialsProxy.username;
+        self.credentialsProxy.password = params[@"newPassword"];
+        self.credentialsProxy.credentialsAreValid = YES;
+        NSLog(@"doCompleted %@", params[@"newPassword"]);
+        [self.http updateBasicAuthHeaderWith:loginName
+                                 andPassword:params[@"newPassword"]];
+        [self.facade sendNotification:onMenuDidNavigateToSection
+                                 body:self.menuPath
+                                 type:MorkovkaServicePostAuthEvent
+         ];
+    }];
+    
+}
 
 - (void) loggOutUser{
     self.userProfile = nil;
     [self.credentialsProxy clearCredentials];
+    [self.ordersArr removeAllObjects];
     [self.http updateBasicAuthHeaderWith:@"guest"
                              andPassword:@"guest"];
     [self.facade sendNotification:onMenuDidNavigateToSection
@@ -465,18 +628,17 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
     NSLog(@"curentLocationAdressEvos");
      @weakify(self);
     
-    [[[[MMPReactiveCoreLocation service]
+    [[[[[MMPReactiveCoreLocation service]
        authorizeWhenInUse]
-        authorize]
+        authorize] replayLazily]
         subscribeNext:^(NSNumber *statusNumber) {
          CLAuthorizationStatus status = [statusNumber intValue];
-             NSLog(@"[INFO] : %d", status);
+            NSLog(@"MMPReactiveCoreLocation %d", status);
          switch (status) {
              case kCLAuthorizationStatusAuthorizedAlways:
              case kCLAuthorizationStatusAuthorizedWhenInUse:
                  break;
              case kCLAuthorizationStatusDenied:
-                // @strongify(self)
                  break;
              default:
                  break;
@@ -517,24 +679,20 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
     NSString *fileName = [[NSBundle mainBundle] pathForResource:filename
                                                          ofType:@"json"
                                                 ];
-    NSDictionary *party;
-
+    NSDictionary *objDict;
+    NSError *error;
     if (fileName) {
-        NSData *partyData = [[NSData alloc] initWithContentsOfFile:fileName];
-        NSError *error;
-        party = [NSJSONSerialization JSONObjectWithData:partyData
+        NSData *objData = [[NSData alloc] initWithContentsOfFile:fileName];
+
+        objDict = [NSJSONSerialization JSONObjectWithData:objData
                                                               options:0
                                                                 error:&error];
-        
-        if (error) {
-            NSLog(@"Something went wrong! %@", error.localizedDescription);
-           return nil;
-        }
-    } else {
-        NSLog(@"Couldn't find file!");
-        return nil;
     }
-    return party;
+    if (error) {
+       return nil;
+    }
+    
+    return objDict;
 }
 
 

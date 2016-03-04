@@ -1,11 +1,6 @@
-
-#import <ReactiveCocoa.h>
 #import "DestinationVO.h"
 
-
 @protocol IRootViewComponent;
-
-
 @protocol IRootViewDelegate <NSObject>
 
 // Mediator

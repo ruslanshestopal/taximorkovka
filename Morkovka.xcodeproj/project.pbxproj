@@ -19,7 +19,8 @@
 		9393E2DA1C39622600D1E735 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9393E2D91C39622600D1E735 /* main.m */; };
 		9393E2DD1C39622600D1E735 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9393E2DC1C39622600D1E735 /* AppDelegate.m */; };
 		9393E2E51C39622600D1E735 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9393E2E41C39622600D1E735 /* Images.xcassets */; };
-		9393E2F41C39622600D1E735 /* MorkovkaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9393E2F31C39622600D1E735 /* MorkovkaTests.m */; };
+		939A98EE1C7E5C9100546DBD /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939A98ED1C7E5C9100546DBD /* ChangePasswordViewController.m */; };
+		939A98F31C7EBBBE00546DBD /* PreOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939A98F21C7EBBBE00546DBD /* PreOrderViewController.m */; };
 		939CA68C1C7622E0003B58B8 /* FavoritesMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 939CA64A1C7622E0003B58B8 /* FavoritesMediator.m */; };
 		939CA68D1C7622E0003B58B8 /* LeftMenuMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 939CA64C1C7622E0003B58B8 /* LeftMenuMediator.m */; };
 		939CA68E1C7622E0003B58B8 /* LoginFacilityMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 939CA64E1C7622E0003B58B8 /* LoginFacilityMediator.m */; };
@@ -64,18 +65,11 @@
 		939CA6F41C7635CF003B58B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 939CA6F11C7635CF003B58B8 /* Main.storyboard */; };
 		939CA6F71C764E78003B58B8 /* FavHousesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939CA6F61C764E78003B58B8 /* FavHousesTableViewController.m */; };
 		939CA6FA1C76570D003B58B8 /* ListFavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939CA6F91C76570D003B58B8 /* ListFavoritesTableViewController.m */; };
+		939CA6FD1C7E4947003B58B8 /* GetCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939CA6FC1C7E4947003B58B8 /* GetCodeViewController.m */; };
+		939CA7001C7E4973003B58B8 /* VerifyCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939CA6FF1C7E4973003B58B8 /* VerifyCodeViewController.m */; };
+		939CA7031C7E49B6003B58B8 /* RenewPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939CA7021C7E49B6003B58B8 /* RenewPasswordViewController.m */; };
 		93AE087F1C6899030013419B /* RunningOrderVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AE087E1C6899030013419B /* RunningOrderVO.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9393E2EE1C39622600D1E735 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9393E2CC1C39622600D1E735 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9393E2D31C39622600D1E735;
-			remoteInfo = Morkovka;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2C77F7CDC8CCBA918B2C3E08 /* libPods-Morkovka.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Morkovka.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +78,7 @@
 		930E2E761C4402A000623A26 /* MorkovkaHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MorkovkaHTTPClient.m; sourceTree = "<group>"; };
 		9326751F1C625EB90089E39A /* UserProfileVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileVO.h; sourceTree = "<group>"; };
 		932675201C625EB90089E39A /* UserProfileVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileVO.m; sourceTree = "<group>"; };
+		93600D3A1C896A6700695F9B /* Morkovka-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Morkovka-Prefix.pch"; sourceTree = "<group>"; };
 		936319D61C4677000017B5E8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		937DE2BB1C4FE8BD009C0B2F /* DestinationVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DestinationVO.h; sourceTree = "<group>"; };
 		937DE2BC1C4FE8BD009C0B2F /* DestinationVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DestinationVO.m; sourceTree = "<group>"; };
@@ -103,9 +98,12 @@
 		9393E2DB1C39622600D1E735 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9393E2DC1C39622600D1E735 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9393E2E41C39622600D1E735 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9393E2ED1C39622600D1E735 /* MorkovkaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MorkovkaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9393E2F21C39622600D1E735 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9393E2F31C39622600D1E735 /* MorkovkaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MorkovkaTests.m; sourceTree = "<group>"; };
+		939A98EC1C7E5C9100546DBD /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		939A98ED1C7E5C9100546DBD /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		939A98F11C7EBBBE00546DBD /* PreOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreOrderViewController.h; sourceTree = "<group>"; };
+		939A98F21C7EBBBE00546DBD /* PreOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreOrderViewController.m; sourceTree = "<group>"; };
 		939CA6491C7622E0003B58B8 /* FavoritesMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesMediator.h; sourceTree = "<group>"; };
 		939CA64A1C7622E0003B58B8 /* FavoritesMediator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesMediator.m; sourceTree = "<group>"; };
 		939CA64B1C7622E0003B58B8 /* LeftMenuMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuMediator.h; sourceTree = "<group>"; };
@@ -188,6 +186,12 @@
 		939CA6F61C764E78003B58B8 /* FavHousesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavHousesTableViewController.m; sourceTree = "<group>"; };
 		939CA6F81C76570D003B58B8 /* ListFavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListFavoritesTableViewController.h; sourceTree = "<group>"; };
 		939CA6F91C76570D003B58B8 /* ListFavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListFavoritesTableViewController.m; sourceTree = "<group>"; };
+		939CA6FB1C7E4947003B58B8 /* GetCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetCodeViewController.h; sourceTree = "<group>"; };
+		939CA6FC1C7E4947003B58B8 /* GetCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetCodeViewController.m; sourceTree = "<group>"; };
+		939CA6FE1C7E4973003B58B8 /* VerifyCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyCodeViewController.h; sourceTree = "<group>"; };
+		939CA6FF1C7E4973003B58B8 /* VerifyCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyCodeViewController.m; sourceTree = "<group>"; };
+		939CA7011C7E49B6003B58B8 /* RenewPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenewPasswordViewController.h; sourceTree = "<group>"; };
+		939CA7021C7E49B6003B58B8 /* RenewPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenewPasswordViewController.m; sourceTree = "<group>"; };
 		93AE087D1C6899030013419B /* RunningOrderVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningOrderVO.h; sourceTree = "<group>"; };
 		93AE087E1C6899030013419B /* RunningOrderVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunningOrderVO.m; sourceTree = "<group>"; };
 		E321BA7463B3FABE46F9D2A4 /* Pods-Morkovka.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Morkovka.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Morkovka/Pods-Morkovka.debug.xcconfig"; sourceTree = "<group>"; };
@@ -200,13 +204,6 @@
 			files = (
 				936319D71C4677000017B5E8 /* MapKit.framework in Frameworks */,
 				69E394BCC545C45161603FB4 /* libPods-Morkovka.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9393E2EA1C39622600D1E735 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +275,7 @@
 		9393E2CB1C39622600D1E735 = {
 			isa = PBXGroup;
 			children = (
+				93600D3A1C896A6700695F9B /* Morkovka-Prefix.pch */,
 				939CA6EF1C7635CF003B58B8 /* LaunchScreen.xib */,
 				939CA6F11C7635CF003B58B8 /* Main.storyboard */,
 				939CA6E51C763503003B58B8 /* BasicUIElements.xib */,
@@ -294,7 +292,6 @@
 			isa = PBXGroup;
 			children = (
 				9393E2D41C39622600D1E735 /* Morkovka.app */,
-				9393E2ED1C39622600D1E735 /* MorkovkaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -422,6 +419,14 @@
 				939CA66D1C7622E0003B58B8 /* UserProfileUIViewController.m */,
 				939CA66E1C7622E0003B58B8 /* VerifyPhoneViewController.h */,
 				939CA66F1C7622E0003B58B8 /* VerifyPhoneViewController.m */,
+				939CA6FB1C7E4947003B58B8 /* GetCodeViewController.h */,
+				939CA6FC1C7E4947003B58B8 /* GetCodeViewController.m */,
+				939CA6FE1C7E4973003B58B8 /* VerifyCodeViewController.h */,
+				939CA6FF1C7E4973003B58B8 /* VerifyCodeViewController.m */,
+				939CA7011C7E49B6003B58B8 /* RenewPasswordViewController.h */,
+				939CA7021C7E49B6003B58B8 /* RenewPasswordViewController.m */,
+				939A98EC1C7E5C9100546DBD /* ChangePasswordViewController.h */,
+				939A98ED1C7E5C9100546DBD /* ChangePasswordViewController.m */,
 			);
 			path = MyProfile;
 			sourceTree = "<group>";
@@ -440,8 +445,8 @@
 		939CA6751C7622E0003B58B8 /* TaxiOrder */ = {
 			isa = PBXGroup;
 			children = (
-				939CA6B91C762410003B58B8 /* TaxiOrderViewController.m */,
 				939CA6BA1C762410003B58B8 /* TaxiOrderViewController.h */,
+				939CA6B91C762410003B58B8 /* TaxiOrderViewController.m */,
 				939CA6761C7622E0003B58B8 /* AddRoutePointTableViewController.h */,
 				939CA6771C7622E0003B58B8 /* AddRoutePointTableViewController.m */,
 				939CA6781C7622E0003B58B8 /* DateSelectionViewController.h */,
@@ -456,6 +461,8 @@
 				939CA6811C7622E0003B58B8 /* TipsTableViewController.m */,
 				939CA6F81C76570D003B58B8 /* ListFavoritesTableViewController.h */,
 				939CA6F91C76570D003B58B8 /* ListFavoritesTableViewController.m */,
+				939A98F11C7EBBBE00546DBD /* PreOrderViewController.h */,
+				939A98F21C7EBBBE00546DBD /* PreOrderViewController.m */,
 			);
 			path = TaxiOrder;
 			sourceTree = "<group>";
@@ -523,24 +530,6 @@
 			productReference = 9393E2D41C39622600D1E735 /* Morkovka.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9393E2EC1C39622600D1E735 /* MorkovkaTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9393E2FA1C39622600D1E735 /* Build configuration list for PBXNativeTarget "MorkovkaTests" */;
-			buildPhases = (
-				9393E2E91C39622600D1E735 /* Sources */,
-				9393E2EA1C39622600D1E735 /* Frameworks */,
-				9393E2EB1C39622600D1E735 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9393E2EF1C39622600D1E735 /* PBXTargetDependency */,
-			);
-			name = MorkovkaTests;
-			productName = MorkovkaTests;
-			productReference = 9393E2ED1C39622600D1E735 /* MorkovkaTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -557,10 +546,6 @@
 								enabled = 1;
 							};
 						};
-					};
-					9393E2EC1C39622600D1E735 = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 9393E2D31C39622600D1E735;
 					};
 				};
 			};
@@ -579,7 +564,6 @@
 			projectRoot = "";
 			targets = (
 				9393E2D31C39622600D1E735 /* Morkovka */,
-				9393E2EC1C39622600D1E735 /* MorkovkaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -598,13 +582,6 @@
 				939CA6F41C7635CF003B58B8 /* Main.storyboard in Resources */,
 				939CA6CD1C7624BB003B58B8 /* tarif.html in Resources */,
 				939CA6CA1C7624BB003B58B8 /* default.gpx in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9393E2EB1C39622600D1E735 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,10 +643,12 @@
 				939CA6B81C7623CD003B58B8 /* TopViewController.m in Sources */,
 				937DE2C71C5021B6009C0B2F /* MenuNavigationSimpleCommand.m in Sources */,
 				939CA6921C7622E0003B58B8 /* SlidingViewMediator.m in Sources */,
+				939A98EE1C7E5C9100546DBD /* ChangePasswordViewController.m in Sources */,
 				939CA6931C7622E0003B58B8 /* UserProfileMediator.m in Sources */,
 				939CA6A21C7622E0003B58B8 /* HousesTableViewController.m in Sources */,
 				939CA6FA1C76570D003B58B8 /* ListFavoritesTableViewController.m in Sources */,
 				939CA69E1C7622E0003B58B8 /* TariffViewController.m in Sources */,
+				939CA6FD1C7E4947003B58B8 /* GetCodeViewController.m in Sources */,
 				939CA6B71C7623CD003B58B8 /* TopTableViewController.m in Sources */,
 				939CA69F1C7622E0003B58B8 /* AddRoutePointTableViewController.m in Sources */,
 				939CA69C1C7622E0003B58B8 /* VerifyPhoneViewController.m in Sources */,
@@ -690,14 +669,17 @@
 				939CA6B51C7623CD003B58B8 /* MKMapView+ZoomLevel.m in Sources */,
 				939CA6A41C7622E0003B58B8 /* TipsTableViewController.m in Sources */,
 				939CA6981C7622E0003B58B8 /* RunningOrdersTableViewController.m in Sources */,
+				939A98F31C7EBBBE00546DBD /* PreOrderViewController.m in Sources */,
 				939CA69A1C7622E0003B58B8 /* RegisterUserViewController.m in Sources */,
 				939CA6971C7622E0003B58B8 /* OrderHistoryTableViewController.m in Sources */,
 				932675211C625EB90089E39A /* UserProfileVO.m in Sources */,
 				939CA6951C7622E0003B58B8 /* DriverOnMapViewController.m in Sources */,
 				939CA6F71C764E78003B58B8 /* FavHousesTableViewController.m in Sources */,
 				939CA6B61C7623CD003B58B8 /* RunningOrderViewCell.m in Sources */,
+				939CA7031C7E49B6003B58B8 /* RenewPasswordViewController.m in Sources */,
 				9393E2DD1C39622600D1E735 /* AppDelegate.m in Sources */,
 				939CA68F1C7622E0003B58B8 /* OderTaxiMediator.m in Sources */,
+				939CA7001C7E4973003B58B8 /* VerifyCodeViewController.m in Sources */,
 				939CA6911C7622E0003B58B8 /* RunningOrdersMediator.m in Sources */,
 				939CA69B1C7622E0003B58B8 /* UserProfileUIViewController.m in Sources */,
 				939CA6C11C762431003B58B8 /* LeftSideMenuViewController.m in Sources */,
@@ -712,23 +694,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9393E2E91C39622600D1E735 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9393E2F41C39622600D1E735 /* MorkovkaTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9393E2EF1C39622600D1E735 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9393E2D31C39622600D1E735 /* Morkovka */;
-			targetProxy = 9393E2EE1C39622600D1E735 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		939CA6EF1C7635CF003B58B8 /* LaunchScreen.xib */ = {
@@ -778,6 +744,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Morkovka-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -823,6 +790,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Morkovka-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -869,36 +837,6 @@
 			};
 			name = Release;
 		};
-		9393E2FB1C39622600D1E735 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = MorkovkaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "ruslanshestopal.com.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Morkovka.app/Morkovka";
-			};
-			name = Debug;
-		};
-		9393E2FC1C39622600D1E735 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = MorkovkaTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "ruslanshestopal.com.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Morkovka.app/Morkovka";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -916,15 +854,6 @@
 			buildConfigurations = (
 				9393E2F81C39622600D1E735 /* Debug */,
 				9393E2F91C39622600D1E735 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9393E2FA1C39622600D1E735 /* Build configuration list for PBXNativeTarget "MorkovkaTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9393E2FB1C39622600D1E735 /* Debug */,
-				9393E2FC1C39622600D1E735 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

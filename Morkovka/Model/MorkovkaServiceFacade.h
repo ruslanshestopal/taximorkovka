@@ -1,5 +1,4 @@
 #import "Proxy.h"
-#import <ReactiveCocoa.h>
 #import "DestinationVO.h"
 #import "UserProfileVO.h"
 #import "RunningOrderVO.h"
@@ -37,17 +36,26 @@ typedef NS_ENUM (NSInteger, MorkovkaServiceErrorCodes) {
 - (RACSignal *) startJSONRequest:(NSString *)requestStr;
 - (RACSignal *) startPOSTRequest:(NSString *)requestPath
                       withParams:(NSDictionary *)params;
-- (RACSignal *) startPUTRequest:(NSString *)requestPath;
-- (RACSignal *) search:(NSString *)text;
+- (RACSignal *) startPUTRequest:(NSString *)requestPath
+                     withParams:(NSDictionary *)params;
+
 - (RACSignal *) searchForStreet:(NSString *)street;
 - (RACSignal *) logginWithName:(NSString *)name
                    andPassword:(NSString *)pass;
 - (RACSignal *) requestUserProfile;
-- (RACSignal *) registerWithPhone:(NSDictionary *)params;
+- (RACSignal *) saveUserProfile:(NSDictionary *)params;
+- (RACSignal *) sendVerificationSMS:(NSDictionary *)params;
 - (RACSignal *) registerWithUserNameAndCode:(NSDictionary *)params;
 - (void) loggOutUser;
 - (RACSignal *) curentLocationAdressForRadius:(NSString *)rad;
 - (RACSignal *) requestOrdersHistory;
 - (RACSignal *) fetchTaxi;
+//Восстановление пароля
+- (RACSignal *) sendRestorationSMS:(NSDictionary *)params;
+- (RACSignal *) checkConfirmCode:(NSDictionary *)params;
+- (RACSignal *) accountRestore:(NSDictionary *)params;
+//Смена пароля
+- (RACSignal *) changeMyPassword:(NSDictionary *)params;
+
 @end
 

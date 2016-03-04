@@ -22,7 +22,9 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell =[UITableViewCell loadFromNib:@"BasicUIElements" cellWithIdentifier:@"buttonCell"];
+    UITableViewCell *cell =[UITableViewCell
+                            loadFromNib:@"BasicUIElements"
+                     cellWithIdentifier:@"buttonCell"];
     UILabel *locLabel = [cell viewWithTag:22];
     UILabel *infLabel = [cell viewWithTag:21];
     RoutePoint *point = [_favArray objectAtIndex:indexPath.row];

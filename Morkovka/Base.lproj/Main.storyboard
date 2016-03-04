@@ -819,42 +819,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя или телефон" textAlignment="natural" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j7o-Bc-fwy">
-                                <rect key="frame" x="20" y="70" width="280" height="30"/>
+                                <rect key="frame" x="20" y="120" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DM7-4h-FBd">
-                                <rect key="frame" x="20" y="118" width="280" height="30"/>
+                                <rect key="frame" x="20" y="160" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vb0-e2-EcT">
-                                <rect key="frame" x="85" y="173" width="150" height="30"/>
+                                <rect key="frame" x="85" y="200" width="150" height="30"/>
                                 <state key="normal" title="Вход"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gv8-aQ-K1A">
-                                <rect key="frame" x="45" y="228" width="230" height="30"/>
-                                <state key="normal" title="Получить код регистрации"/>
+                                <rect key="frame" x="45" y="280" width="230" height="30"/>
+                                <state key="normal" title="Получить код для регистрации"/>
                                 <connections>
                                     <segue destination="Fbn-lZ-1JW" kind="show" identifier="getSMS" id="xAq-Xf-mFS"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MgG-eb-y8c">
-                                <rect key="frame" x="45" y="261" width="230" height="30"/>
-                                <state key="normal" title="Register with code"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bU5-QC-7K0">
+                                <rect key="frame" x="98" y="205" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0X-6W-0xw">
+                                <rect key="frame" x="45" y="310" width="230" height="30"/>
+                                <state key="normal" title="Восстановить пароль"/>
                                 <connections>
-                                    <segue destination="Hvd-vJ-5Jv" kind="show" identifier="regME" id="U8P-Oh-Ckz"/>
+                                    <segue destination="MEy-pB-Yzn" kind="show" identifier="getPASS" id="Hd7-qg-GvN"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2MX-3J-Xyp">
-                                <rect key="frame" x="20" y="150" width="280" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2MX-3J-Xyp">
+                                <rect key="frame" x="20" y="233" width="280" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bU5-QC-7K0">
-                                <rect key="frame" x="111" y="178" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -865,7 +865,7 @@
                         <outlet property="loginButton" destination="Vb0-e2-EcT" id="hhM-HD-vqz"/>
                         <outlet property="loginTextField" destination="j7o-Bc-fwy" id="X0T-S7-h2f"/>
                         <outlet property="passwdTextField" destination="DM7-4h-FBd" id="hCU-7m-59H"/>
-                        <outlet property="registerButton" destination="MgG-eb-y8c" id="1lf-WX-sIG"/>
+                        <outlet property="renewPassButton" destination="Y0X-6W-0xw" id="1Xh-5f-JkK"/>
                         <outlet property="statusLabel" destination="2MX-3J-Xyp" id="iE2-cw-Fei"/>
                     </connections>
                 </viewController>
@@ -886,25 +886,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0661111999" borderStyle="roundedRect" placeholder="Номер телефона" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="McK-kE-q9k">
-                                <rect key="frame" x="20" y="110" width="280" height="30"/>
+                                <rect key="frame" x="20" y="120" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WLT-Ia-Soe">
-                                <rect key="frame" x="95" y="180" width="130" height="30"/>
+                                <rect key="frame" x="95" y="190" width="130" height="30"/>
                                 <state key="normal" title="Получить SMS">
                                     <color key="titleColor" red="0.070588235294117646" green="0.47450980392156861" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="DdO-HD-IhU">
-                                <rect key="frame" x="67" y="185" width="20" height="20"/>
+                                <rect key="frame" x="67" y="195" width="20" height="20"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyy-7f-Vef">
-                                <rect key="frame" x="20" y="143" width="280" height="40"/>
+                                <rect key="frame" x="20" y="153" width="280" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVF-bb-dkF">
+                                <rect key="frame" x="45" y="246" width="230" height="30"/>
+                                <state key="normal" title="Регистрация с кодом SMS"/>
+                                <connections>
+                                    <segue destination="Hvd-vJ-5Jv" kind="show" identifier="regME" id="zS0-2Y-Ifo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -918,7 +925,268 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QEX-6U-MDg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1156" y="161"/>
+            <point key="canvasLocation" x="788" y="212"/>
+        </scene>
+        <!--Получение кода подтверждения-->
+        <scene sceneID="sGq-e6-MQY">
+            <objects>
+                <viewController title="Получение кода подтверждения" id="MEy-pB-Yzn" customClass="GetCodeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aHR-Mc-7A8"/>
+                        <viewControllerLayoutGuide type="bottom" id="ORs-0B-SPG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Pg-km-gEx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Номер телефона" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yr4-qB-KfZ">
+                                <rect key="frame" x="20" y="120" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQP-Dl-F73">
+                                <rect key="frame" x="95" y="160" width="130" height="30"/>
+                                <state key="normal" title="Получить SMS">
+                                    <color key="titleColor" red="0.070588235289999995" green="0.47450980390000003" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="l4k-z4-hU0">
+                                <rect key="frame" x="67" y="165" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8n-VM-Djg">
+                                <rect key="frame" x="20" y="230" width="280" height="30"/>
+                                <state key="normal" title="Проверка полученного кода"/>
+                                <connections>
+                                    <segue destination="f5g-bz-MHu" kind="show" identifier="verifyCODE" id="SwU-X6-9DW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adS-Yt-Qnt">
+                                <rect key="frame" x="20" y="193" width="280" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="getCodeButton" destination="NQP-Dl-F73" id="FUC-Mw-f1x"/>
+                        <outlet property="loadingIndicator" destination="l4k-z4-hU0" id="znk-xn-pbh"/>
+                        <outlet property="phoneTextField" destination="Yr4-qB-KfZ" id="BUi-sB-nRc"/>
+                        <outlet property="statusLabel" destination="adS-Yt-Qnt" id="ZAP-rF-sl6"/>
+                        <outlet property="verifyCodeButton" destination="V8n-VM-Djg" id="J5u-4b-8ga"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zqC-5X-VHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="268" y="984"/>
+        </scene>
+        <!--Изменить пароль-->
+        <scene sceneID="lWT-gy-UMd">
+            <objects>
+                <viewController title="Изменить пароль" id="vWx-oT-QwJ" customClass="ChangePasswordViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lrj-gE-JQw"/>
+                        <viewControllerLayoutGuide type="bottom" id="wwH-eC-8fq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I70-Le-eov">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Старый пароль" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="2Gs-73-Tli">
+                                <rect key="frame" x="20" y="120" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Новый пароль" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8r8-4T-q4n">
+                                <rect key="frame" x="20" y="160" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Новый пароль повторно" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XLw-Ne-PEn">
+                                <rect key="frame" x="20" y="200" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Drh-Xe-Q4C">
+                                <rect key="frame" x="45" y="240" width="230" height="30"/>
+                                <state key="normal" title="Изменить пароль"/>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="aNN-mK-099">
+                                <rect key="frame" x="62" y="245" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2qU-BF-qE9">
+                                <rect key="frame" x="20" y="273" width="280" height="52"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="aNN-mK-099" id="PJ0-j3-ku1"/>
+                        <outlet property="passwdATextField" destination="8r8-4T-q4n" id="DR3-3o-W9M"/>
+                        <outlet property="passwdBTextField" destination="XLw-Ne-PEn" id="wEW-bq-R5j"/>
+                        <outlet property="passwdOldTextField" destination="2Gs-73-Tli" id="G95-Qv-LaR"/>
+                        <outlet property="statusLabel" destination="2qU-BF-qE9" id="kbK-OF-VIw"/>
+                        <outlet property="updatePassButton" destination="Drh-Xe-Q4C" id="8oF-TL-fB1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MkN-Cu-5KM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-53" y="1565"/>
+        </scene>
+        <!--Разместить заказ-->
+        <scene sceneID="qe9-hC-PPJ">
+            <objects>
+                <viewController storyboardIdentifier="PreOrderStoryboardVC" title="Разместить заказ" id="Mlu-iI-HnP" customClass="PreOrderViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1ku-CO-DrC"/>
+                        <viewControllerLayoutGuide type="bottom" id="wea-AU-Ydn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IdA-gg-T6c">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ваше имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mD4-qV-csK">
+                                <rect key="frame" x="20" y="120" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Номер телефона" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oec-AT-Z2W">
+                                <rect key="frame" x="20" y="160" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCq-7g-a5P">
+                                <rect key="frame" x="87" y="220" width="153" height="30"/>
+                                <state key="normal" title="Разместить заказ"/>
+                                <connections>
+                                    <action selector="confirmOrder:" destination="Mlu-iI-HnP" eventType="touchDown" id="KS1-4s-pV4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="nameTextField" destination="mD4-qV-csK" id="0lQ-HK-0V1"/>
+                        <outlet property="orderButton" destination="bCq-7g-a5P" id="HTs-iw-7NH"/>
+                        <outlet property="phoneTextField" destination="oec-AT-Z2W" id="0nY-6F-weQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C8m-EQ-Gc3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="472" y="1657"/>
+        </scene>
+        <!--Проверка полученного кода-->
+        <scene sceneID="eYS-py-aWj">
+            <objects>
+                <viewController title="Проверка полученного кода" id="f5g-bz-MHu" customClass="VerifyCodeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bkw-GH-0ft"/>
+                        <viewControllerLayoutGuide type="bottom" id="G0a-KL-85M"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="psi-AI-3QY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Полученый код (SMS)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xhk-AW-9hG">
+                                <rect key="frame" x="20" y="120" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nrw-BE-oUB">
+                                <rect key="frame" x="95" y="160" width="130" height="30"/>
+                                <state key="normal" title="Проверить код">
+                                    <color key="titleColor" red="0.070588235289999995" green="0.47450980390000003" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bzT-yS-X3O">
+                                <rect key="frame" x="67" y="165" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jiL-hE-EnJ">
+                                <rect key="frame" x="20" y="230" width="280" height="30"/>
+                                <state key="normal" title="Ввести новый пароль"/>
+                                <connections>
+                                    <segue destination="KS9-0E-p2W" kind="show" identifier="updPASS" id="ZCg-dq-AKy"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PwX-ZC-HWH">
+                                <rect key="frame" x="20" y="193" width="280" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="changePassButton" destination="jiL-hE-EnJ" id="2nK-ij-xtZ"/>
+                        <outlet property="codeTextField" destination="xhk-AW-9hG" id="Rau-cq-kdD"/>
+                        <outlet property="loadingIndicator" destination="bzT-yS-X3O" id="tMT-nP-j5c"/>
+                        <outlet property="statusLabel" destination="PwX-ZC-HWH" id="caf-iY-y5y"/>
+                        <outlet property="verifyCodeButton" destination="Nrw-BE-oUB" id="a12-Fo-orE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z0v-ic-LcR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="714" y="984"/>
+        </scene>
+        <!--Введите новый пароль-->
+        <scene sceneID="gJg-xS-KZL">
+            <objects>
+                <viewController title="Введите новый пароль" id="KS9-0E-p2W" customClass="RenewPasswordViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="65W-Wg-IgP"/>
+                        <viewControllerLayoutGuide type="bottom" id="WlY-ip-mg3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F69-it-pMi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Новый пароль" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0x9-cV-NqO">
+                                <rect key="frame" x="20" y="120" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Новый пароль повторно" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="s4P-aF-om1">
+                                <rect key="frame" x="20" y="160" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pvz-OA-l62">
+                                <rect key="frame" x="20" y="227" width="280" height="52"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbl-uD-44c">
+                                <rect key="frame" x="81" y="200" width="158" height="30"/>
+                                <state key="normal" title="Сохранить пароль"/>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="MhL-Ck-bBZ">
+                                <rect key="frame" x="59" y="205" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="changePassButton" destination="kbl-uD-44c" id="3oo-X6-RLq"/>
+                        <outlet property="loadingIndicator" destination="MhL-Ck-bBZ" id="p70-tK-pRu"/>
+                        <outlet property="passwdATextField" destination="0x9-cV-NqO" id="6jf-IT-Aax"/>
+                        <outlet property="passwdBTextField" destination="s4P-aF-om1" id="9uM-Cf-eiv"/>
+                        <outlet property="statusLabel" destination="Pvz-OA-l62" id="UiE-ou-jVM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jb1-sY-wff" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1158" y="984"/>
         </scene>
         <!--Регистрация с кодом-->
         <scene sceneID="w3J-YH-0dk">
@@ -933,36 +1201,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="a19-FO-iRZ">
-                                <rect key="frame" x="20" y="90" width="280" height="30"/>
+                                <rect key="frame" x="20" y="120" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jCW-oF-exD">
-                                <rect key="frame" x="20" y="128" width="280" height="30"/>
+                                <rect key="frame" x="20" y="160" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Пароль повторно" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="mGY-Ny-CgB">
-                                <rect key="frame" x="20" y="166" width="280" height="30"/>
+                                <rect key="frame" x="20" y="200" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Код подтверждения" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bWf-eg-eeR">
-                                <rect key="frame" x="81" y="204" width="158" height="30"/>
+                                <rect key="frame" x="81" y="240" width="158" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gCf-ka-v9L">
-                                <rect key="frame" x="57" y="288" width="20" height="20"/>
+                                <rect key="frame" x="57" y="323" width="20" height="20"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J1V-Ls-oX4">
-                                <rect key="frame" x="20" y="233" width="280" height="52"/>
+                                <rect key="frame" x="20" y="268" width="280" height="52"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Uv-bk-uWS">
-                                <rect key="frame" x="81" y="283" width="158" height="30"/>
+                                <rect key="frame" x="81" y="318" width="158" height="30"/>
                                 <state key="normal" title="Регистрация"/>
                             </button>
                         </subviews>
@@ -981,12 +1249,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hnV-qc-cx7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="774" y="601"/>
+            <point key="canvasLocation" x="1286" y="212"/>
         </scene>
-        <!--List Favorites Table View Controller-->
+        <!--Список избранных адресов-->
         <scene sceneID="EVo-qu-F9g">
             <objects>
-                <tableViewController storyboardIdentifier="FavListStoryboardVC" id="GEN-nr-aer" customClass="ListFavoritesTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="FavListStoryboardVC" title="Список избранных адресов" id="GEN-nr-aer" customClass="ListFavoritesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="h5w-zK-9nf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1000,7 +1268,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="76u-Pf-nep" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1265" y="1006"/>
+            <point key="canvasLocation" x="-1016" y="1574"/>
         </scene>
         <!--В Избранное-->
         <scene sceneID="3bV-jY-TNN">
@@ -1043,105 +1311,82 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="oS4-S3-Y8K">
-                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="oS4-S3-Y8K">
+                                <rect key="frame" x="150" y="314" width="20" height="20"/>
                                 <color key="color" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </activityIndicatorView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGt-co-U2C" customClass="TPKeyboardAvoidingScrollView">
-                                <rect key="frame" x="0.0" y="40" width="320" height="528"/>
-                                <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vXl-l9-KUG">
-                                        <rect key="frame" x="20" y="37" width="280" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Телефон" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ns-7S-Mfw">
-                                        <rect key="frame" x="20" y="78" width="280" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Скидка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EhX-gl-TVF">
-                                        <rect key="frame" x="37" y="110" width="59" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Utc-nM-UMx">
-                                        <rect key="frame" x="104" y="110" width="196" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="196" id="o3R-Sa-2kq"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oRU-be-EkY">
-                                        <rect key="frame" x="101" y="158" width="118" height="30"/>
-                                        <state key="normal" title="Сохранить"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3e-8e-MPF">
-                                        <rect key="frame" x="101" y="196" width="118" height="30"/>
-                                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="118" id="VFf-cT-dkF"/>
-                                        </constraints>
-                                        <state key="normal" title="Выход">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="logOut" destination="xA8-WY-6tn" eventType="touchDown" id="Z5l-hP-WR9"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="b3e-8e-MPF" firstAttribute="trailing" secondItem="oRU-be-EkY" secondAttribute="trailing" id="4Gm-5G-eL4"/>
-                                    <constraint firstItem="oRU-be-EkY" firstAttribute="top" secondItem="Utc-nM-UMx" secondAttribute="bottom" constant="27" id="4tu-vO-FGr"/>
-                                    <constraint firstItem="vXl-l9-KUG" firstAttribute="top" secondItem="yGt-co-U2C" secondAttribute="top" constant="37" id="9Ay-o4-CFg"/>
-                                    <constraint firstItem="b3e-8e-MPF" firstAttribute="leading" secondItem="oRU-be-EkY" secondAttribute="leading" id="D9d-RF-92G"/>
-                                    <constraint firstItem="vXl-l9-KUG" firstAttribute="leading" secondItem="yGt-co-U2C" secondAttribute="leading" constant="20" id="Dcf-qR-XnG"/>
-                                    <constraint firstItem="oRU-be-EkY" firstAttribute="centerX" secondItem="vXl-l9-KUG" secondAttribute="centerX" id="G4x-Wi-eAF"/>
-                                    <constraint firstItem="Utc-nM-UMx" firstAttribute="top" secondItem="8Ns-7S-Mfw" secondAttribute="bottom" constant="11" id="I0S-QN-w97"/>
-                                    <constraint firstItem="EhX-gl-TVF" firstAttribute="baseline" secondItem="Utc-nM-UMx" secondAttribute="baseline" id="O6k-SQ-urR"/>
-                                    <constraint firstItem="vXl-l9-KUG" firstAttribute="centerX" secondItem="yGt-co-U2C" secondAttribute="centerX" id="PlJ-26-anF"/>
-                                    <constraint firstAttribute="trailing" secondItem="vXl-l9-KUG" secondAttribute="trailing" constant="20" id="RJS-sm-s7G"/>
-                                    <constraint firstItem="b3e-8e-MPF" firstAttribute="top" secondItem="yGt-co-U2C" secondAttribute="top" constant="196" id="dfo-Dc-kSA"/>
-                                    <constraint firstItem="oRU-be-EkY" firstAttribute="centerX" secondItem="8Ns-7S-Mfw" secondAttribute="centerX" id="dui-bO-ite"/>
-                                    <constraint firstItem="Utc-nM-UMx" firstAttribute="trailing" secondItem="vXl-l9-KUG" secondAttribute="trailing" id="gWg-AT-LWE"/>
-                                    <constraint firstItem="Utc-nM-UMx" firstAttribute="trailing" secondItem="8Ns-7S-Mfw" secondAttribute="trailing" id="sq0-SR-PZu"/>
-                                    <constraint firstItem="Utc-nM-UMx" firstAttribute="leading" secondItem="EhX-gl-TVF" secondAttribute="trailing" constant="8" symbolic="YES" id="ucf-tk-Gsd"/>
-                                    <constraint firstAttribute="bottom" secondItem="vXl-l9-KUG" secondAttribute="bottom" constant="501" id="vA8-bm-UMr"/>
-                                    <constraint firstItem="b3e-8e-MPF" firstAttribute="top" secondItem="oRU-be-EkY" secondAttribute="bottom" constant="8" symbolic="YES" id="zZk-g8-Rkb"/>
-                                </constraints>
-                            </scrollView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7g4-PY-crH">
+                                <rect key="frame" x="20" y="120" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Телефон" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5UT-RV-WW6">
+                                <rect key="frame" x="20" y="158" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7xn-OV-RJH">
+                                <rect key="frame" x="101" y="216" width="118" height="30"/>
+                                <state key="normal" title="Сохранить"/>
+                                <connections>
+                                    <action selector="saveProfile" destination="xA8-WY-6tn" eventType="touchDown" id="QzB-By-dcv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXq-Mz-Aau">
+                                <rect key="frame" x="101" y="441" width="118" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Выход">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="logOut" destination="xA8-WY-6tn" eventType="touchDown" id="djP-Mk-8Bj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5b-vO-HSS">
+                                <rect key="frame" x="48" y="254" width="230" height="30"/>
+                                <state key="normal" title="Изменить пароль"/>
+                                <connections>
+                                    <segue destination="vWx-oT-QwJ" kind="show" identifier="changePASS" id="0XJ-3D-ggB"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Khc-9y-ICw">
+                                <rect key="frame" x="20" y="183" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="yGt-co-U2C" secondAttribute="trailing" id="2gc-Ct-cuj"/>
-                            <constraint firstItem="yGt-co-U2C" firstAttribute="bottom" secondItem="Kot-p7-OwR" secondAttribute="top" id="GPQ-E2-ou6"/>
-                            <constraint firstItem="yGt-co-U2C" firstAttribute="top" secondItem="oKA-Su-DAo" secondAttribute="top" constant="40" id="SPx-E1-5af"/>
-                            <constraint firstItem="yGt-co-U2C" firstAttribute="leading" secondItem="oKA-Su-DAo" secondAttribute="leading" id="fQa-dD-BIr"/>
+                            <constraint firstItem="oS4-S3-Y8K" firstAttribute="centerY" secondItem="oKA-Su-DAo" secondAttribute="centerY" constant="40" id="3rd-b1-Scx"/>
+                            <constraint firstItem="oS4-S3-Y8K" firstAttribute="centerX" secondItem="oKA-Su-DAo" secondAttribute="centerX" id="Qyl-qO-1TG"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="discountLabel" destination="Utc-nM-UMx" id="Ov0-MM-VAs"/>
-                        <outlet property="exitButton" destination="b3e-8e-MPF" id="r8V-ZP-UqA"/>
-                        <outlet property="firstNameTextField" destination="vXl-l9-KUG" id="Hug-lQ-WCz"/>
+                        <outlet property="discountLabel" destination="Khc-9y-ICw" id="WEL-ST-UCb"/>
+                        <outlet property="exitButton" destination="AXq-Mz-Aau" id="NNb-kb-2RV"/>
+                        <outlet property="firstNameTextField" destination="7g4-PY-crH" id="RaO-rn-ypR"/>
                         <outlet property="loadingIndicator" destination="oS4-S3-Y8K" id="f3X-CI-vax"/>
-                        <outlet property="phoneLabel" destination="8Ns-7S-Mfw" id="5ZW-Hs-GoF"/>
-                        <outlet property="saveButton" destination="oRU-be-EkY" id="EPi-MA-3wP"/>
-                        <outlet property="scrollView" destination="yGt-co-U2C" id="ozM-Zt-hiU"/>
+                        <outlet property="phoneLabel" destination="5UT-RV-WW6" id="1rh-oM-a0o"/>
+                        <outlet property="saveButton" destination="7xn-OV-RJH" id="0lE-yZ-3Ml"/>
+                        <outletCollection property="uiItems" destination="7g4-PY-crH" id="pjI-hs-TRh"/>
+                        <outletCollection property="uiItems" destination="5UT-RV-WW6" id="Fva-QR-F7e"/>
+                        <outletCollection property="uiItems" destination="Khc-9y-ICw" id="N1m-6l-lEv"/>
+                        <outletCollection property="uiItems" destination="7xn-OV-RJH" id="7a4-W7-hFJ"/>
+                        <outletCollection property="uiItems" destination="w5b-vO-HSS" id="SAj-bF-B5R"/>
+                        <outletCollection property="uiItems" destination="AXq-Mz-Aau" id="Pu7-vx-QhN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nbz-HM-Ecs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="256" y="901"/>
+            <point key="canvasLocation" x="-584" y="1565"/>
         </scene>
         <!--Избранные адреса-->
         <scene sceneID="MTq-0u-K5E">
@@ -1170,7 +1415,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" id="Nnc-1b-JkY">
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" id="Vrs-R8-03w">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
@@ -1180,10 +1425,13 @@
                         </connections>
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="Vrs-R8-03w" id="onp-vi-FFo"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRc-9F-hMd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-643" y="147"/>
+            <point key="canvasLocation" x="-634" y="163"/>
         </scene>
         <!--Номер дома-->
         <scene sceneID="DVN-Dg-cov">
