@@ -1,0 +1,1 @@
+../../../VMTableViewStaticCells/VMTableViewStaticCells/NSIndexPath+StaticCellsTranslationHelper.h

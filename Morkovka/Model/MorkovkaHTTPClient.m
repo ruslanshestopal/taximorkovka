@@ -51,8 +51,9 @@ static NSString *const MorkovkaBasicAuthPassword = @"guest";
                                      name, passSHA512String]
                                     dataUsingEncoding:NSUTF8StringEncoding];
     NSString *base64AuthCredentials = [basicAuthCredentials
-                                       base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)0];
-    [self.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", base64AuthCredentials]
+                base64EncodedStringWithOptions:(NSDataBase64EncodingOptions)0];
+    [self.requestSerializer
+     setValue:[NSString stringWithFormat:@"Basic %@", base64AuthCredentials]
                   forHTTPHeaderField:@"Authorization"];
 }
 

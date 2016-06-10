@@ -40,10 +40,10 @@
                                          @strongify(self)
                                          return [[self.delegate
                                                   accountRestore:@{@"phone":phoneStr,
-                                                                     @"confirm_code":confirmStr,
-                                                                     @"password":self.passwdATextField.text,
-                                                                      @"confirm_password":self.passwdBTextField.text
-                                                                     } ]
+                      @"confirm_code":confirmStr,
+                      @"password":self.passwdATextField.text,
+                       @"confirm_password":self.passwdBTextField.text
+                      } ]
                                                  materialize];
                                      }];
     
@@ -53,7 +53,10 @@
     
     self.changePassButton.rac_command = changePasswordCommand;
     
-    UIColor *defaultButtonTitleColor = [UIColor colorWithRed:0.071 green:0.475 blue:0.996 alpha:1.000];
+    UIColor *defaultButtonTitleColor = [UIColor colorWithRed:0.071
+                                                       green:0.475
+                                                        blue:0.996
+                                                       alpha:1.000];
     
     RACSignal *buttonTextColor = [changePasswordCommand.enabled map:^id(NSNumber *x) {
         return x.boolValue ? defaultButtonTitleColor : [UIColor lightGrayColor];

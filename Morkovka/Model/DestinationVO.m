@@ -108,15 +108,15 @@
     if (value == 0 ) {
         str = @"Не добавлять";
     }else{
-        str = NSStringWithFormat(@"%ld ₴ быстрее",value);
+        str = NSStringWithFormat(@"%ld ₴ быстрее",(long)value);
         if (value < 20) {
-            str = NSStringWithFormat(@"%ld ₴ чаевые",value);
+            str = NSStringWithFormat(@"%ld ₴ чаевые",(long)value);
         }
         if (value ==100) {
-            str = NSStringWithFormat(@"%ld ₴ драйвер",value);
+            str = NSStringWithFormat(@"%ld ₴ драйвер",(long)value);
         }
         if (value > 100) {
-            str = NSStringWithFormat(@"%ld ₴ драйвер + быстрее",value);
+            str = NSStringWithFormat(@"%ld ₴ драйвер + быстрее",(long)value);
         }
     }
     return  str;
@@ -191,6 +191,8 @@
          self.addCost = [NSNumber
       numberWithInteger:MAX([self.addCost integerValue]-100, 0)];
     }
+    
+    self.preCheck = nil;
 }
 - (void) triggerTipsSelectionatIndex:(NSInteger)index{
     self.addCost = [NSNumber numberWithInteger:index*5];
@@ -200,6 +202,7 @@
         self.addCost = [NSNumber
         numberWithInteger:[self.addCost integerValue]+100];
     }
+    self.preCheck = nil;
 }
 + (NSValueTransformer *)routePointsJSONTransformer {
     return [MTLJSONAdapter

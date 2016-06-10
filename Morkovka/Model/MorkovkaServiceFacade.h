@@ -10,13 +10,8 @@ extern NSString *const MorkovkaServicePostAuthEvent;
 
 /// Service error codes.
 typedef NS_ENUM (NSInteger, MorkovkaServiceErrorCodes) {
-    /// Not authorized.
-    kMorkovkaServiceNotAuthorized = 401,
-    /// Invalid username or password.
     kMorkovkaServiceInvalidCredentials = 403,
-    /// Invalid server response format error code.
-    kMorkovkaServiceInvalidResponseFormat = 406,
-    /// Location failed.
+    kMorkovkaServiceInvalidResponseFormat = 404,
     kMorkovkaServiceLocationFailed = 402,
 };
 

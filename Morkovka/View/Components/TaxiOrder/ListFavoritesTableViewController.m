@@ -15,12 +15,14 @@
     [self.tableView reloadData];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+                    numberOfRowsInSection:(NSInteger)section
 {
     return _favArray.count;
     
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+                        cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell =[UITableViewCell
                             loadFromNib:@"BasicUIElements"
@@ -33,7 +35,8 @@
 
     return cell;
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView
+                    didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     RoutePoint *newPoint = [self.favArray objectAtIndex:indexPath.row];
 
     if (self.point) {

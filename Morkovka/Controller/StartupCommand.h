@@ -1,6 +1,3 @@
 #import "SimpleCommand.h"
-@interface StartupCommand : SimpleCommand {
-
-}
-
+@interface StartupCommand : SimpleCommand
 @end

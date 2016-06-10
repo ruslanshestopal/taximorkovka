@@ -70,11 +70,13 @@
     RAC(self.verifyCodeButton, enabled) = notExecuting;
     
     [executing subscribeNext:^(NSNumber *x) {
+        @strongify(self)
         x.boolValue ?
         [self.loadingIndicator startAnimating]
         :[self.loadingIndicator stopAnimating];
     }];
     RAC(self.statusLabel, text) = [networkResults map:^id(RACEvent *x) {
+        @strongify(self)
         return x.eventType == RACEventTypeError ?
         [self messageForEffor:x.error]
         : NSLocalizedString(@"Вам отправлено сообщение (SMS) с кодом.", nil);
@@ -94,7 +96,7 @@
     
     [getCodeCommand.executionSignals subscribeNext:^(RACSignal *execution) {
         [[execution dematerialize] subscribeNext:^(id value) {
-            NSLog(@"executionSignals Value: %@", value);
+            @strongify(self)
             [self performSegueWithIdentifier:@"verifyCODE" sender:self];
         }];
     }];
@@ -107,7 +109,6 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSLog(@"segue.identifier %@", segue.identifier);
     
     UIViewController *vc = [segue destinationViewController];
     if([segue.identifier isEqualToString:@"verifyCODE"]){

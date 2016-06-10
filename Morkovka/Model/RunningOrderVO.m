@@ -17,47 +17,29 @@
     
 }
 + (NSValueTransformer *)addressToJSONTransformer {
-    return [MTLJSONAdapter dictionaryTransformerWithModelClass:[RoutePoint class]];
+    return [MTLJSONAdapter
+            dictionaryTransformerWithModelClass:[RoutePoint class]];
 }
 + (NSValueTransformer *)addressFromJSONTransformer {
-    return [MTLJSONAdapter dictionaryTransformerWithModelClass:[RoutePoint class]];
+    return [MTLJSONAdapter
+            dictionaryTransformerWithModelClass:[RoutePoint class]];
 }
 + (NSValueTransformer *)gpsJSONTransformer {
-    return [MTLJSONAdapter dictionaryTransformerWithModelClass:[DriverPosition class]];
+    return [MTLJSONAdapter
+            dictionaryTransformerWithModelClass:[DriverPosition class]];
 }
 - (BOOL) isExpired{
-    NSTimeInterval ti = [[NSDate date] timeIntervalSinceDate:self.dispatchedAt];
+    NSTimeInterval ti = [[NSDate date]
+                         timeIntervalSinceDate:self.dispatchedAt];
     NSInteger minutes = (NSInteger) (ti / 60);
     return minutes>60;
 }
 - (BOOL) isProcessed{
-    NSTimeInterval ti = [[NSDate date] timeIntervalSinceDate:self.dispatchedAt];
+    NSTimeInterval ti = [[NSDate date]
+                         timeIntervalSinceDate:self.dispatchedAt];
     NSInteger minutes = (NSInteger) (ti / 60);
     return minutes>20 && self.isArchived;
 }
-/*
- {
- "dispatching_order_uid": "5088d3414944476586430510f08adf95",
- "discount_trip": false,
- "find_car_timeout": 720,
- "find_car_delay": 0,
- "order_cost": "101",
- "currency": " грн.",
- "route_address_from": {
- "name": "ЧИГОРИНА УЛ.",
- "number": "12",
- "lat": 50.4199295043945,
- "lng": 30.5379524230957
- },
- "route_address_to": {
- "name": "ПУШКИНСКАЯ УЛ.",
- "number": "21",
- "lat": 50.4438972473144,
- "lng": 30.5179347991943
- }
- }
-
- */
 @end
 
 @implementation DriverPosition

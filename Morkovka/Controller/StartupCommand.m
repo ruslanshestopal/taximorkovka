@@ -33,7 +33,7 @@ static NSString *const MorkovkaKeychainServiceName = @"com.morkovka";
 
     ECSlidingViewController *vc = (ECSlidingViewController*) [notification body];
 
-    //UIViewController *topViewController = [[TaxiOrderViewController alloc] init];
+
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LeftSideMenuViewController *underLeftViewController  = [storyboard
@@ -45,12 +45,8 @@ static NSString *const MorkovkaKeychainServiceName = @"com.morkovka";
     UINavigationController *navigationController = [[UINavigationController alloc]
                                     initWithRootViewController:topViewController];
     
-    // configure anchored layout
-    //vc.anchorRightPeekAmount  = 100.0;
     vc.anchorLeftRevealAmount = 210.0;
     vc.anchorRightRevealAmount = 250.0;
-    
-    // configure sliding view controller
     vc.topViewController = navigationController;
     vc.underLeftViewController  = underLeftViewController;
 
@@ -87,11 +83,11 @@ static NSString *const MorkovkaKeychainServiceName = @"com.morkovka";
 
     
     FavoritesTableViewController *favoritesVC =  [storyboard
-                instantiateViewControllerWithIdentifier:@"FavoritesStoryboardVC"];
+             instantiateViewControllerWithIdentifier:@"FavoritesStoryboardVC"];
 
     
     RunningOrdersTableViewController *ordersVC =  [storyboard
-                    instantiateViewControllerWithIdentifier:@"MyOrdersStoryboardVC"];
+             instantiateViewControllerWithIdentifier:@"MyOrdersStoryboardVC"];
     
     [self.facade registerMediator:
         [LoginFacilityMediator withViewComponent:loginVC]];
@@ -99,15 +95,14 @@ static NSString *const MorkovkaKeychainServiceName = @"com.morkovka";
         [UserProfileMediator withViewComponent:profileVC]];
 
     [self.facade registerMediator:
-     [OrderHistoryMediator withViewComponent:historyVC]];
+        [OrderHistoryMediator withViewComponent:historyVC]];
 
     [self.facade registerMediator:
-     [FavoritesMediator withViewComponent:favoritesVC]];
+        [FavoritesMediator withViewComponent:favoritesVC]];
 
     [self.facade registerMediator:
-     [RunningOrdersMediator withViewComponent:ordersVC]];
+        [RunningOrdersMediator withViewComponent:ordersVC]];
     
-    //RunningOrdersTableViewController
-    //RunningOrdersMediator
+
 }
 @end

@@ -78,7 +78,7 @@
 		930E2E761C4402A000623A26 /* MorkovkaHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MorkovkaHTTPClient.m; sourceTree = "<group>"; };
 		9326751F1C625EB90089E39A /* UserProfileVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileVO.h; sourceTree = "<group>"; };
 		932675201C625EB90089E39A /* UserProfileVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileVO.m; sourceTree = "<group>"; };
-		93600D3A1C896A6700695F9B /* Morkovka-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Morkovka-Prefix.pch"; sourceTree = "<group>"; };
+		93600D3A1C896A6700695F9B /* Morkovka-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Morkovka-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		936319D61C4677000017B5E8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		937DE2BB1C4FE8BD009C0B2F /* DestinationVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DestinationVO.h; sourceTree = "<group>"; };
 		937DE2BC1C4FE8BD009C0B2F /* DestinationVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DestinationVO.m; sourceTree = "<group>"; };
@@ -275,7 +275,6 @@
 		9393E2CB1C39622600D1E735 = {
 			isa = PBXGroup;
 			children = (
-				93600D3A1C896A6700695F9B /* Morkovka-Prefix.pch */,
 				939CA6EF1C7635CF003B58B8 /* LaunchScreen.xib */,
 				939CA6F11C7635CF003B58B8 /* Main.storyboard */,
 				939CA6E51C763503003B58B8 /* BasicUIElements.xib */,
@@ -308,6 +307,7 @@
 				9393E2E41C39622600D1E735 /* Images.xcassets */,
 				9393E2D71C39622600D1E735 /* Supporting Files */,
 				937DE2BF1C5016C4009C0B2F /* ApplicationFacade.h */,
+				93600D3A1C896A6700695F9B /* Morkovka-Prefix.pch */,
 			);
 			path = Morkovka;
 			sourceTree = "<group>";
@@ -759,6 +759,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -799,6 +800,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -811,13 +813,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vitaly Berg (H3SCJRZ9B9)";
 				INFOPLIST_FILE = Morkovka/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ruslanshestopal.Morkovka;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruslanshestopal.Morkovka2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "dfdcbab4-62aa-4026-9bd6-344f49156fa7";
 			};
 			name = Debug;
 		};
@@ -827,13 +829,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vitaly Berg (H3SCJRZ9B9)";
 				INFOPLIST_FILE = Morkovka/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ruslanshestopal.Morkovka;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ruslanshestopal.Morkovka2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "dfdcbab4-62aa-4026-9bd6-344f49156fa7";
 			};
 			name = Release;
 		};

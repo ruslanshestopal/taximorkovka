@@ -47,7 +47,10 @@
     
     self.updatePassButton.rac_command = verifyCodeCommand;
     
-    UIColor *defaultButtonTitleColor = [UIColor colorWithRed:0.071 green:0.475 blue:0.996 alpha:1.000];
+    UIColor *defaultButtonTitleColor = [UIColor colorWithRed:0.071
+                                                       green:0.475
+                                                        blue:0.996
+                                                       alpha:1.000];
     
     RACSignal *buttonTextColor = [verifyCodeCommand.enabled map:^id(NSNumber *x) {
         return x.boolValue ? defaultButtonTitleColor : [UIColor lightGrayColor];

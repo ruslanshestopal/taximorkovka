@@ -47,7 +47,8 @@
 - (void) addStartPointWithStreetAddress:(NSString *)street
                         andStreetNumber:(NSString *)number;
 + (NSDateFormatter *)dateFormatter;
-+ (UIImage *)imageForIndex:(NSInteger)index andCount:(NSInteger)count;
++ (UIImage *)imageForIndex:(NSInteger)index
+                  andCount:(NSInteger)count;
 @end
 
 @interface RoutePoint : MTLModel <MTLJSONSerializing>

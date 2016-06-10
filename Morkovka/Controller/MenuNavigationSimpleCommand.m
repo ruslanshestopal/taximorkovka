@@ -49,13 +49,13 @@
 
     }else if (index.row==1){
         LoginFacilityMediator *ordersMediator = [self.facade
-                                                retrieveMediator:[RunningOrdersMediator name]];
+                                retrieveMediator:[RunningOrdersMediator name]];
         topVC = (RunningOrdersTableViewController*)[ordersMediator viewComponent];
         
     }else if (index.row==2){
         if (credentials.credentialsAreValid || isPostAuthEvent) {
             OrderHistoryMediator *historyMediator = [self.facade
-                                                    retrieveMediator:[OrderHistoryMediator name]];
+                                     retrieveMediator:[OrderHistoryMediator name]];
             topVC = (OrderHistoryTableViewController*)[historyMediator viewComponent];
         }else{
             LoginFacilityMediator *loginMediator = [self.facade

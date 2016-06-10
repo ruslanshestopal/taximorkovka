@@ -1,0 +1,1 @@
+../../../VMTableViewStaticCells/VMTableViewStaticCells/VMStaticSectionsAdapter.h

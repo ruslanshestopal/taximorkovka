@@ -7,11 +7,7 @@
 @interface CredentialsProxy : Proxy
 /// A Boolean indicating that both username and password are available.
 @property(nonatomic, readonly) BOOL hasCredentials;
-/// A Boolean indicating that user has successfully authenticated
-/// with these credentials.
 @property(nonatomic) BOOL credentialsAreValid;
-
-
 /// The username or nil.
 @property(nonatomic, copy) NSString *username;
 /// The password or nil.
@@ -21,7 +17,6 @@
 // Constructors.
 + (instancetype) proxyWithServiceName:(NSString *)serviceName;
 + (instancetype) withProxyName:(NSString *)name serviceName:(NSString *)sname;
-
 /// Clears the credentials.
 - (void) clearCredentials;
 

@@ -7,8 +7,5 @@
 #define onLocationServiceDidUpdateToLocation @"onLocationServiceDidUpdateToLocation"
 #define onServiceDidFoundTaxi @"onServiceDidFoundTaxi"
 #define onServiceDidNotFoundTaxi @"onServiceDidNotFoundTaxi"
+#define onApplicationWillEnterForeground @"onApplicationWillEnterForeground"
 
-/*
-@interface ApplicationFacade : Facade {
-}
- */

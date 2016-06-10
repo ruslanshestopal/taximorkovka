@@ -1,0 +1,1 @@
+../../../VMTableViewStaticCells/VMTableViewStaticCells/UITableView+VMStaticCells.h

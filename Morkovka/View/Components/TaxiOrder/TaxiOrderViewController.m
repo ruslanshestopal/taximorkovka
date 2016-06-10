@@ -43,33 +43,12 @@
     
     
     self.priceView = cell.contentView;
-    /*
-     RACSignal *changeSignal = [self.destination
-                        rac_valuesAndChangesForKeyPath:@keypath(self.destination, routePoints)
-     options: NSKeyValueObservingOptionNew| NSKeyValueObservingOptionOld observer:nil];
-     [changeSignal subscribeNext:^(RACTuple *x){
-         UILabel *nLabel = [self.priceView viewWithTag:10];
-         nLabel.text = @"";
-         UILabel *fLabel = [self.priceView viewWithTag:20];
-         fLabel.text = @"";
-
-         [self autoCalculatePrice];
-     }];
-     
-    
-    
-    
-    NSArray *arrNums = @[ @"12", @"35", @"21", @"1/28", @"4"];
-    NSArray *arr = @[ @"ЧИГОРИНА УЛ.", @"ПОЛЕВАЯ УЛ.", @"ПУШКИНСКАЯ УЛ.", @"ВАСИЛЕВСКОЙ ВАНДЫ УЛ.", @"САГАЙДАЧНОГО УЛ. (БОРИСПОЛЬ)"];
-   
-    [@2 timesWithIndex:^(NSUInteger index) {
-        RoutePoint *point = [RoutePoint new];
-        point.name = [arr objectAtIndex:index];
-        point.houseNum =[arrNums objectAtIndex:index];
-        self->_destination.routePoints = [self->_destination.routePoints arrayByAddingObject:point] ;
-    }];
-    */
     self.nav = self.navigationController;
+    
+    RACSignal *changeSignal = [ self.destination rac_valuesAndChangesForKeyPath:@keypath( self.destination, preCheck) options: NSKeyValueObservingOptionNew| NSKeyValueObservingOptionOld observer:nil];
+    [changeSignal subscribeNext:^(RACTuple *x){
+        NSLog(@"PreCheck %@ \n next one: \n %@", x.first, x.second);
+    }];
     
 
 }
@@ -105,7 +84,8 @@
     }
     return 2;
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+                numberOfRowsInSection:(NSInteger)section
 {
     if(section == 0){
         return _destination.routePoints.count-1;
@@ -185,7 +165,8 @@
     }
     return nil;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+- (CGFloat)tableView:(UITableView *)tableView
+            heightForFooterInSection:(NSInteger)section {
     CGFloat height = 0;
     if (section == 0 && [_destination startingPointIsReady]) {
         height = 44;
@@ -195,9 +176,11 @@
     return height;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+            cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-      UITableViewCell *cell =[UITableViewCell loadFromNib:@"BasicUIElements" cellWithIdentifier:@"buttonCell"];
+      UITableViewCell *cell =[UITableViewCell loadFromNib:@"BasicUIElements"
+                                       cellWithIdentifier:@"buttonCell"];
       UILabel *locLabel = [cell viewWithTag:22];
       UILabel *infLabel = [cell viewWithTag:21];
       UIImageView *imgView = [cell viewWithTag:20];
@@ -261,7 +244,10 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
         return YES;
+    }
+     return NO;
 }
 
 - (void)tableView:(UITableView *)tableView
@@ -340,15 +326,9 @@
     
 }
 -(void)proceedWithTaxiOder{
-    NSLog(@"proceedWithTaxiOder");
 
     [self addOverlayView];
-    /*
-    _destination.userName = @"Morkovka iOS Test";
-    _destination.userComment = @"разработка приложения";
-    _destination.userPhone = @"+38(000)-000-00-00";
-    */
-    
+
     _destination.userPhone = [[NSUserDefaults standardUserDefaults]
                                 stringForKey:@"userPhone"];
     _destination.userName = [[NSUserDefaults standardUserDefaults]
@@ -372,19 +352,13 @@
             otherButtonTitles: nil];
              [alert show];
              });
-       
-
-       NSLog(@"serializedData %@", error);
-        }
+       }
         completed:^{
             NSLog(@"placeAnOrder completed!");
         }
      ];
 }
 -(void)locateAutomaticly:(UIButton*)sender{
-    
-    NSLog(@"locateAutomaticly");
-    
     sender.enabled = NO;
     UIButton* button = [[sender superview] viewWithTag:10];
     UIActivityIndicatorView *loadingIndicator =[[sender superview] viewWithTag:12];
@@ -396,7 +370,6 @@
         @strongify(self)
 
         NSDictionary *params = [signalValues last];
-        NSLog(@"curentLocationAdress %@", params);
         NSDictionary *streetsDict =params[@"geo_streets"];
         if ([streetsDict[@"geo_street"] count]) {
            
@@ -462,7 +435,6 @@
 
 -(void) autoCalculatePrice{
     if ([_destination routeIsReady]) {
-        NSLog(@"SOULD UPDATE PRICE");
 
         UILabel *nLabel = [self.priceView viewWithTag:10];
         nLabel.text = @"";
@@ -477,8 +449,6 @@
                 RoutePrecalculation *precheck = [MTLJSONAdapter modelOfClass:RoutePrecalculation.class
                                                           fromJSONDictionary:params
                                                                        error:&error];
-                NSLog(@"calculatePreoderPrice %@", precheck);
-            
                 dispatch_async(dispatch_get_main_queue(), ^{
                      self->_destination.preCheck = precheck;
                     [self.tableView reloadData];
@@ -519,7 +489,10 @@
 }
 
 -(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    if ([gestureRecognizer locationInView:gestureRecognizer.view].x < 270.0) {
+    if (gestureRecognizer.view.frame.origin.x <0.0) {
+        return YES;
+    }
+    if ([gestureRecognizer locationInView:gestureRecognizer.view].x < 220.0) {
         return YES;
     }
     return NO;

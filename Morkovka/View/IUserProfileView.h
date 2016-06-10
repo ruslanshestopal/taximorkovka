@@ -11,7 +11,8 @@
 - (RACSignal *) sendVerificationSMS:(NSDictionary *)params;
 - (RACSignal *) registerWithUserNameAndCode:(NSDictionary *)params;
 
-- (RACSignal *) logginWithName:(NSString *)name andPassword:(NSString *)pass;
+- (RACSignal *) logginWithName:(NSString *)name
+                   andPassword:(NSString *)pass;
 - (void) loggOutUser;
 - (RACSignal *) requestUserProfile;
 - (RACSignal *) saveUserProfile:(NSDictionary *)params;

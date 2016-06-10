@@ -1,7 +1,4 @@
 #import "SimpleCommand.h"
 
-@interface MenuNavigationSimpleCommand : SimpleCommand {
-
-}
-
+@interface MenuNavigationSimpleCommand : SimpleCommand
 @end

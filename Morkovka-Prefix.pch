@@ -1,0 +1,23 @@
+#import <Availability.h>
+
+#ifndef __IPHONE_8_0
+#warning "This project requires iOS SDK 8.0 or later."
+#endif
+
+#ifdef __OBJC__
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <QuartzCore/QuartzCore.h>
+#import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+
+#import <Mantle/Mantle.h>
+#import <ObjectiveSugar/ObjectiveSugar.h>
+#import <ReactiveCocoa.h>
+#import <AFNetworking/AFNetworking.h>
+
+
+
+#import "ApplicationFacade.h"
+
+#endif

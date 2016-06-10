@@ -10,46 +10,21 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Starting the application.
-    NSLog(@"%@",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
+- (BOOL)application:(UIApplication *)application
+                didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     Facade *facade = [Facade getInstance];
-    [facade registerCommand:onAppStarted commandClassRef:[StartupCommand class]];
-    [facade sendNotification:onAppStarted body:self.window.rootViewController];
+    [facade registerCommand:onAppStarted
+            commandClassRef:[StartupCommand class]];
+    [facade sendNotification:onAppStarted
+                        body:self.window.rootViewController];
     [self.window makeKeyAndVisible]; 
     return YES;
 }
-- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler {
-    NSLog(@"Handle events for background url session");
-    
-
-}
-
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
-{
-    if ([notification.alertBody isEqualToString:@"Application is timeout!"])
-    {
-        // show an alert regarding your notification
-    }
-}
-- (void)applicationWillResignActive:(UIApplication *)application {
- 
-}
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
- 
-}
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
- 
-}
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
- 
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
+    [[Facade getInstance]
+        sendNotification:onApplicationWillEnterForeground];
  
 }
 

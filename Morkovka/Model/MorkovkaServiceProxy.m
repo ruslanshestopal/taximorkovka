@@ -19,21 +19,17 @@ NSString *const MorkovkaServicePostAuthEvent = @"MorkovkaServicePostAuthEvent";
 @implementation MorkovkaServiceProxy
 
 
-typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
-
-
 - (void) initializeProxy {
     self.http = [MorkovkaHTTPClient new];
     self.destination = [DestinationVO new];
     self.ordersArr = [NSMutableArray new];
     self.streets = [NSArray new];
-    self.credentialsProxy = [self.facade retrieveProxy:[CredentialsProxy name]];
+    self.credentialsProxy = [self.facade
+                             retrieveProxy:[CredentialsProxy name]];
 
-    NSLog(@"self.credentialsProxy %@ %@ ", self.credentialsProxy.username, self.credentialsProxy.password);
     
     if (self.credentialsProxy.hasCredentials &&
         self.credentialsProxy.credentialsAreValid) {
-        //[self.credentialsProxy clearCredentials];
         [self.http updateBasicAuthHeaderWith:self.credentialsProxy.username
                                  andPassword:self.credentialsProxy.password];
     }
@@ -55,35 +51,6 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
         return  point;
     }];
     self.streets = [self.streets arrayByAddingObjectsFromArray:poiArray];
-    
-
-    /*
-    
-    RunningOrderVO *order = [RunningOrderVO new];
-    order.orderUID = @"7c2220e7de6342f0ab16862afaf7e4dc";
-    order.driverPhone = @"+380938163336";
-    order.foundCar = @"СВ4255АН, КРАСНЫЙ, NEXIA, +380938163336";
-    order.orderCost = @"22";
-    RoutePoint *p1 = [RoutePoint new];
-    p1.name = @"ЧИГОРИНА УЛ.";
-    p1.houseNum = @"12";
-
-    RoutePoint *p2 = [RoutePoint new];
-    p2.name = @"БУБНОВА АНДРЕЯ УЛ.";
-    p2.houseNum = @"8";
-    
-    order.addressFrom = p1;
-    order.addressTo = p2;
-    
-    DriverPosition *pos = [ DriverPosition new];
-    pos.lat = [NSNumber numberWithFloat:50.419977];
-    pos.lng = [NSNumber numberWithFloat:30.537664];
-    pos.time = [NSDate date];
-    order.gps = pos;
-    
-    [self.ordersArr addObject:order];
-     */
-
 }
 
 - (RACSignal *) startJSONRequest:(NSString *)requestStr {
@@ -188,33 +155,6 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
     return [RACSignal return:matchesArray];
 }
 
-/*
-- (RACSignal *)search:(NSString *)text {
-    
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        NSString *req= [NSString stringWithFormat:@"/api/geodata/streets/search?q=%@&fields=*",
-                        [text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-        [self search:req completed:^(NSString *searchResult, NSError *error) {
-            [subscriber sendNext:searchResult];
-            [subscriber sendCompleted];
-        }];
-        return nil;
-    }];
-}
-
-- (void)search:(NSString *)text completed:(CompletedResults)handler {
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [NSThread sleepForTimeInterval:2.5];
-        [[self startJSONRequest:text] subscribeNext:^(id x) {
-            if (handler){
-                handler(x, nil);
-            }
-        }];
-    });
-}
- */
- 
 - (RACSignal *) logginWithName:(NSString *)name andPassword:(NSString *)pass{
     NSDictionary *params = @{@"login": name,
                              @"password": [MorkovkaHTTPClient
@@ -236,7 +176,6 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
                                      type:MorkovkaServicePostAuthEvent
              ];
         }error:^(NSError *error) {
-            NSLog(@"Error logging in");
             [subscriber sendError:error];
         }];
         return nil;
@@ -245,7 +184,6 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
         self.credentialsProxy.username = name;
         self.credentialsProxy.password = pass;
         self.credentialsProxy.credentialsAreValid = YES;
-        NSLog(@"doCompleted %@", params);
         [self.http updateBasicAuthHeaderWith:name andPassword:pass];
     }];
 
@@ -257,7 +195,8 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
         NSDictionary *routeJSON =
          [MTLJSONAdapter JSONDictionaryFromModel:self.destination error:nil] ;
         
-        [[self startPOSTRequest:@"/api/weborders" withParams:routeJSON] subscribeNext:^(NSDictionary *val) {
+        [[self startPOSTRequest:@"/api/weborders" withParams:routeJSON]
+                                        subscribeNext:^(NSDictionary *val) {
             NSError *error = nil;
             
             self.destination.routePoints  = [NSArray new];
@@ -275,10 +214,7 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
                                      body:[NSIndexPath indexPathForRow:1 inSection:0]
              ];
             [self.facade sendNotification:onOrderDidSuccessfullyPlaced];
-
-              NSLog(@"RunningOrderVO %@",  order);
         }error:^(NSError *error) {
-            NSLog(@"Error making order");
             [subscriber sendError:error];
         }];
         return nil;
@@ -332,7 +268,6 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
                              order.gps = [MTLJSONAdapter modelOfClass:DriverPosition.class
                              fromJSONDictionary:posDict
                              error:nil];
-                             NSLog(@"pos dict %@", posDict);
                         }
                         [self sendNotification:onServiceDidFoundTaxi];
                         return YES;
@@ -363,7 +298,7 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
                     return order.isCanceledByUser;
                 }];
         return [taskSignal finally:^{
-             NSLog(@"taskSignal finally");
+              NSLog(@"taskSignal finally");
              [[UIApplication sharedApplication]
                         endBackgroundTask:backgroundTask];
         }];
@@ -585,14 +520,6 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
          subscribeNext:^(id val) {
              [subscriber sendNext:val];
              [subscriber sendCompleted];
-
-             /*
-              {
-              "oldPassword":"oldpsw",
-              "newPassword":"newpsw",
-              "repeatNewPassword":"newpsw"
-              }
-              */
          }error:^(NSError *error) {
              [subscriber sendError:error];
          }];
@@ -625,15 +552,13 @@ typedef void(^CompletedResults)(NSString *searchResult, NSError *error);
 }
 
 - (RACSignal *) curentLocationAdressForRadius:(NSString *)rad{
-    NSLog(@"curentLocationAdressEvos");
      @weakify(self);
     
     [[[[[MMPReactiveCoreLocation service]
-       authorizeWhenInUse]
-        authorize] replayLazily]
+                      authorizeWhenInUse]
+                 authorize] replayLazily]
         subscribeNext:^(NSNumber *statusNumber) {
          CLAuthorizationStatus status = [statusNumber intValue];
-            NSLog(@"MMPReactiveCoreLocation %d", status);
          switch (status) {
              case kCLAuthorizationStatusAuthorizedAlways:
              case kCLAuthorizationStatusAuthorizedWhenInUse:
